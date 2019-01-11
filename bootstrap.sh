@@ -8,21 +8,61 @@
 # You can tune your VLANs numbers, adresses, bitmasks and scopes here.
 # You can even add more VLANs if you like, up to 8.
 
-VLAN[0]=4094
-IPADDR[0]=10.224.255.1
+VLAN[0]=4090
+IPADDR[0]=192.168.90.1
 BITMASK[0]=25
-NETWORK[0]=10.224.255.0
-DHCP_START[0]=10.224.255.50
-DHCP_END[0]=10.224.255.100
+NETWORK[0]=192.168.90.0
+DHCP_START[0]=192.168.90.50
+DHCP_END[0]=192.168.90.100
 DHCP_LEASE[0]=4h
 
-VLAN[1]=4093
-IPADDR[1]=10.224.255.129
+VLAN[1]=4091
+IPADDR[1]=192.168.91.1
 BITMASK[1]=25
-NETWORK[1]=10.224.255.128
-DHCP_START[1]=10.224.255.150
-DHCP_END[1]=10.224.255.200
+NETWORK[1]=192.168.91.0
+DHCP_START[1]=192.168.91.50
+DHCP_END[1]=192.168.91.100
 DHCP_LEASE[1]=4h
+
+VLAN[2]=4092
+IPADDR[2]=192.168.92.1
+BITMASK[2]=25
+NETWORK[2]=192.168.92.0
+DHCP_START[2]=192.168.92.50
+DHCP_END[2]=192.168.92.100
+DHCP_LEASE[2]=4h
+
+VLAN[3]=4093
+IPADDR[3]=192.168.93.1
+BITMASK[3]=25
+NETWORK[3]=192.168.93.0
+DHCP_START[3]=192.168.93.50
+DHCP_END[3]=192.168.93.100
+DHCP_LEASE[3]=4h
+
+VLAN[4]=4094
+IPADDR[4]=192.168.94.1
+BITMASK[4]=25
+NETWORK[4]=192.168.94.0
+DHCP_START[4]=192.168.94.50
+DHCP_END[4]=192.168.94.100
+DHCP_LEASE[4]=4h
+
+VLAN[5]=11
+IPADDR[5]=192.168.11.1
+BITMASK[5]=25
+NETWORK[5]=192.168.11.0
+DHCP_START[5]=192.168.11.50
+DHCP_END[5]=192.168.11.100
+DHCP_LEASE[5]=4h
+
+VLAN[6]=23
+IPADDR[6]=192.168.23.1
+BITMASK[6]=25
+NETWORK[6]=192.168.23.0
+DHCP_START[6]=192.168.23.50
+DHCP_END[6]=192.168.23.100
+DHCP_LEASE[6]=4h
 
 OSPF_AREA=0.0.0.1
 
@@ -224,10 +264,11 @@ echo " OK"
 # ---------------------------------------------------------
 
 echo
-echo Configuring NAT in eth0 interface...
+echo Configuring NAT in eth0 and eth1 interfaces...
 
 iptables -t nat -F POSTROUTING
 iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
 iptables -t nat -A POSTROUTING -o ppp0 -j MASQUERADE
 # This is a fix for some problem detected in particular versions of
 # raspbian and docker, the FORWARDING chain gets a DROP policy
@@ -332,11 +373,11 @@ allow-hotplug eth0
 auto eth0
 iface eth0 inet dhcp
 
-# H3372 4G modem
+# 4g modem as eth1
 allow-hotplug eth1
 auto eth1
 iface eth1 inet dhcp
-post-up   route add default gw 192.168.8.1 dev eth1
+post-up   route add default gw 192.168.1.1 dev eth1
 post-down route del default dev eth1
 
 allow-hotplug wlan0
@@ -510,6 +551,7 @@ interface lo0
 !
 router ospf
  passive-interface eth0
+ passive-interface eth1
  passive-interface lo0
  network 127.0.0.0/8 area 0.0.0.0
 !
