@@ -126,9 +126,9 @@ export PATH=$PATH:/usr/local/go/bin
 function upgrade_ipbot() {
   echo
   echo Downloading ipbot application...
-  mkdir -p /opt/src/github.com/nowireless4u
-  cd /opt/src/github.com/nowireless4u
-  if ! git clone https://github.com/nowireless4u/ipbot.git; then
+  mkdir -p /opt/src/github.com/ArubaIberia
+  cd /opt/src/github.com/ArubaIberia
+  if ! git clone https://github.com/ArubaIberia/ipbot.git; then
     pushd .
     cd ipbot
     git pull
@@ -138,7 +138,7 @@ function upgrade_ipbot() {
 
   echo
   echo Compiling ipbot...
-  cd /opt/src/github.com/nowireless4u/ipbot
+  cd /opt/src/github.com/ArubaIberia/ipbot
   go get
   go install
   echo OK
