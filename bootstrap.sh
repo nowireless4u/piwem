@@ -551,7 +551,6 @@ interface lo0
 !
 router ospf
  passive-interface eth0
- passive-interface eth1
  passive-interface lo0
  network 127.0.0.0/8 area 0.0.0.0
 !
