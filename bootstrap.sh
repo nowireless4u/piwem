@@ -8,61 +8,45 @@
 # You can tune your VLANs numbers, adresses, bitmasks and scopes here.
 # You can even add more VLANs if you like, up to 8.
 
-VLAN[0]=4090
-IPADDR[0]=192.168.90.1
+VLAN[0]=4092
+IPADDR[0]=192.168.92.1
 BITMASK[0]=25
-NETWORK[0]=192.168.90.0
-DHCP_START[0]=192.168.90.50
-DHCP_END[0]=192.168.90.100
+NETWORK[0]=192.168.92.0
+DHCP_START[0]=192.168.92.50
+DHCP_END[0]=192.168.92.100
 DHCP_LEASE[0]=4h
 
-VLAN[1]=4091
-IPADDR[1]=192.168.91.1
+VLAN[1]=4093
+IPADDR[1]=192.168.93.1
 BITMASK[1]=25
-NETWORK[1]=192.168.91.0
-DHCP_START[1]=192.168.91.50
-DHCP_END[1]=192.168.91.100
+NETWORK[1]=192.168.93.0
+DHCP_START[1]=192.168.93.50
+DHCP_END[1]=192.168.93.100
 DHCP_LEASE[1]=4h
 
-VLAN[2]=4092
-IPADDR[2]=192.168.92.1
+VLAN[2]=4094
+IPADDR[2]=192.168.94.1
 BITMASK[2]=25
-NETWORK[2]=192.168.92.0
-DHCP_START[2]=192.168.92.50
-DHCP_END[2]=192.168.92.100
+NETWORK[2]=192.168.94.0
+DHCP_START[2]=192.168.94.50
+DHCP_END[2]=192.168.94.100
 DHCP_LEASE[2]=4h
 
-VLAN[3]=4093
-IPADDR[3]=192.168.93.1
+VLAN[3]=4091
+IPADDR[3]=192.168.91.1
 BITMASK[3]=25
-NETWORK[3]=192.168.93.0
-DHCP_START[3]=192.168.93.50
-DHCP_END[3]=192.168.93.100
+NETWORK[3]=192.168.91.0
+DHCP_START[3]=192.168.91.50
+DHCP_END[3]=192.168.91.100
 DHCP_LEASE[3]=4h
 
-VLAN[4]=4094
-IPADDR[4]=192.168.94.1
+VLAN[4]=11
+IPADDR[4]=192.168.11.1
 BITMASK[4]=25
-NETWORK[4]=192.168.94.0
-DHCP_START[4]=192.168.94.50
-DHCP_END[4]=192.168.94.100
+NETWORK[4]=192.168.11.0
+DHCP_START[4]=192.168.11.50
+DHCP_END[4]=192.168.11.100
 DHCP_LEASE[4]=4h
-
-VLAN[5]=11
-IPADDR[5]=192.168.11.1
-BITMASK[5]=25
-NETWORK[5]=192.168.11.0
-DHCP_START[5]=192.168.11.50
-DHCP_END[5]=192.168.11.100
-DHCP_LEASE[5]=4h
-
-VLAN[6]=23
-IPADDR[6]=192.168.23.1
-BITMASK[6]=25
-NETWORK[6]=192.168.23.0
-DHCP_START[6]=192.168.23.50
-DHCP_END[6]=192.168.23.100
-DHCP_LEASE[6]=4h
 
 OSPF_AREA=0.0.0.1
 
@@ -126,9 +110,9 @@ export PATH=$PATH:/usr/local/go/bin
 function upgrade_ipbot() {
   echo
   echo Downloading ipbot application...
-  mkdir -p /opt/src/github.com/ArubaIberia
-  cd /opt/src/github.com/ArubaIberia
-  if ! git clone https://github.com/ArubaIberia/ipbot.git; then
+  mkdir -p /opt/src/github.com/nowireless4u
+  cd /opt/src/github.com/nowireless4u
+  if ! git clone https://github.com/nowireless4u/ipbot.git; then
     pushd .
     cd ipbot
     git pull
@@ -138,7 +122,7 @@ function upgrade_ipbot() {
 
   echo
   echo Compiling ipbot...
-  cd /opt/src/github.com/ArubaIberia/ipbot
+  cd /opt/src/github.com/nowireless4u/ipbot
   go get
   go install
   echo OK
