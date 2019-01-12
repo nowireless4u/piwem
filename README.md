@@ -19,7 +19,7 @@ Don't worry, you don't need to code. Just follow the instructions in the link ab
 After you have created your [telegram chat bot](https://core.telegram.org/bots) (and got the API key for the bot), just download the script to your raspberry pi, and run it:
 
 ```
-wget https://raw.githubusercontent.com/ArubaIberia/piwem/master/bootstrap.sh
+wget https://raw.githubusercontent.com/nowireless4u/piwem/master/bootstrap.sh
 
 chmod 0755 bootstrap.sh
 
@@ -35,7 +35,7 @@ You are also given a few options during installation, such as creating a new adm
 
 Your bot should be online few seconds after you reboot the Raspberry (provided the Raspberry gets internet connectivity). Search your bot by name in telegram and add it to your contact list. Then send any message (try sending the word "ip"), and wait for the bot to greet you!
 
-The code of the bot is also [shared on github](https://github.com/ArubaIberia/ipbot). Please have a look there for a quick introduction to the commands the bot accepts.
+The code of the bot is also [shared on github](https://github.com/nowireless4u/ipbot). Please have a look there for a quick introduction to the commands the bot accepts.
 
 ## Upgrading the bot
 
@@ -44,7 +44,7 @@ Occassionally, some bugfix in the ipbot code may require that you upgrade to a n
 ```
 rm -f bootstrap.sh
 
-wget https://raw.githubusercontent.com/ArubaIberia/piwem/master/bootstrap.sh
+wget https://raw.githubusercontent.com/nowireless4u/piwem/master/bootstrap.sh
 
 chmod 0755 bootstrap.sh
 
